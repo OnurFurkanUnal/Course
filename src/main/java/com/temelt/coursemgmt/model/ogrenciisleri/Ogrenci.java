@@ -5,15 +5,23 @@
  */
 package com.temelt.coursemgmt.model.ogrenciisleri;
 
-import com.temelt.coursemgmt.model.yonetim.Grup;
-import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author vektorel
  */
+@Entity
+@Table(name = "student")
 public class Ogrenci {
+
     private Long id;
     private String ad;
     private String soyad;
@@ -22,6 +30,9 @@ public class Ogrenci {
     private String mail;
     private Date kayitTarihi;
 
+    @Id
+    @SequenceGenerator(name = "seq_student", allocationSize = 1, sequenceName = "seq_student")
+    @GeneratedValue(generator = "seq_student", strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }
@@ -30,6 +41,7 @@ public class Ogrenci {
         this.id = id;
     }
 
+    @Column(name = "name", length = 50)
     public String getAd() {
         return ad;
     }
@@ -38,6 +50,7 @@ public class Ogrenci {
         this.ad = ad;
     }
 
+    @Column(name = "surname", length = 50)
     public String getSoyad() {
         return soyad;
     }
@@ -46,6 +59,7 @@ public class Ogrenci {
         this.soyad = soyad;
     }
 
+    @Column(name = "address", length = 500)
     public String getAdres() {
         return adres;
     }
@@ -54,6 +68,7 @@ public class Ogrenci {
         this.adres = adres;
     }
 
+    @Column(name = "phone", length = 13)
     public String getTel() {
         return tel;
     }
@@ -62,6 +77,7 @@ public class Ogrenci {
         this.tel = tel;
     }
 
+    @Column(name = "email", length = 100)
     public String getMail() {
         return mail;
     }
@@ -70,6 +86,7 @@ public class Ogrenci {
         this.mail = mail;
     }
 
+    @Column(name = "reg_date")
     public Date getKayitTarihi() {
         return kayitTarihi;
     }

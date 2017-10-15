@@ -7,18 +7,33 @@ package com.temelt.coursemgmt.model.ogrenciisleri;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author vektorel
  */
+@Entity
+@Table(name = "student_payment")
 public class OgrenciOdeme {
+
     private Long id;
     private String aciklama;
     private BigDecimal odemeMiktari;
     private Ogrenci ogrenci;
     private Date odemeTarihi;
 
+    @Id
+    @SequenceGenerator(name = "seq_student_payment", allocationSize = 1, sequenceName = "seq_student_payment")
+    @GeneratedValue(generator = "seq_student_payment", strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }
@@ -27,6 +42,7 @@ public class OgrenciOdeme {
         this.id = id;
     }
 
+    @Column(name = "description", length = 400)
     public String getAciklama() {
         return aciklama;
     }
@@ -35,6 +51,7 @@ public class OgrenciOdeme {
         this.aciklama = aciklama;
     }
 
+    @Column(name = "quantity", scale = 2, precision = 14)
     public BigDecimal getOdemeMiktari() {
         return odemeMiktari;
     }
@@ -43,6 +60,8 @@ public class OgrenciOdeme {
         this.odemeMiktari = odemeMiktari;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
     public Ogrenci getOgrenci() {
         return ogrenci;
     }
@@ -51,6 +70,7 @@ public class OgrenciOdeme {
         this.ogrenci = ogrenci;
     }
 
+    @Column(name = "quantity_date")
     public Date getOdemeTarihi() {
         return odemeTarihi;
     }
@@ -58,6 +78,5 @@ public class OgrenciOdeme {
     public void setOdemeTarihi(Date odemeTarihi) {
         this.odemeTarihi = odemeTarihi;
     }
-    
-    
+
 }

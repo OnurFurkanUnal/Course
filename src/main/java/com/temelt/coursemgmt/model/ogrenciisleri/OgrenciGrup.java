@@ -8,18 +8,33 @@ package com.temelt.coursemgmt.model.ogrenciisleri;
 import com.temelt.coursemgmt.model.yonetim.Grup;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author vektorel
  */
+@Entity
+@Table(name = "student_group")
 public class OgrenciGrup {
+
     private Long id;
     private Ogrenci ogrenci;
     private Grup grup;
     private BigDecimal ucret;
     private Date kayitTarihi;
 
+    @Id
+    @SequenceGenerator(name = "seq_student_group", allocationSize = 1, sequenceName = "seq_student_group")
+    @GeneratedValue(generator = "seq_student_group", strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }
@@ -28,6 +43,8 @@ public class OgrenciGrup {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
     public Ogrenci getOgrenci() {
         return ogrenci;
     }
@@ -36,6 +53,8 @@ public class OgrenciGrup {
         this.ogrenci = ogrenci;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "group_id")
     public Grup getGrup() {
         return grup;
     }
@@ -44,6 +63,7 @@ public class OgrenciGrup {
         this.grup = grup;
     }
 
+    @Column(name = "name", scale = 2, precision = 14)
     public BigDecimal getUcret() {
         return ucret;
     }
@@ -52,6 +72,7 @@ public class OgrenciGrup {
         this.ucret = ucret;
     }
 
+    @Column(name = "reg_date")
     public Date getKayitTarihi() {
         return kayitTarihi;
     }
@@ -59,6 +80,5 @@ public class OgrenciGrup {
     public void setKayitTarihi(Date kayitTarihi) {
         this.kayitTarihi = kayitTarihi;
     }
-    
-    
+
 }

@@ -7,7 +7,10 @@ package com.temelt.coursemgmt.model.kullanici;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +24,8 @@ public class Rol {
     private String tanim;
 
     @Id
+    @SequenceGenerator(name = "seq_role",allocationSize = 1,sequenceName ="seq_role" )
+    @GeneratedValue(generator = "seq_role",strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }

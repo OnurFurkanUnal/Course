@@ -10,12 +10,24 @@ import com.temelt.coursemgmt.model.ik.Ogretmen;
 import com.temelt.coursemgmt.model.ik.Personel;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author vektorel
  */
+@Entity
+@Table(name = "expense")
 public class Gider {
+
     private Long id;
     private String konu;
     private BigDecimal miktar;
@@ -24,6 +36,9 @@ public class Gider {
     private Personel personel;
     private Envanter envanter;
 
+    @Id
+    @SequenceGenerator(name = "seq_expense", allocationSize = 1, sequenceName = "seq_expense")
+    @GeneratedValue(generator = "seq_expense", strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }
@@ -32,6 +47,7 @@ public class Gider {
         this.id = id;
     }
 
+    @Column(name = "subject", length = 100)
     public String getKonu() {
         return konu;
     }
@@ -40,6 +56,7 @@ public class Gider {
         this.konu = konu;
     }
 
+    @Column(name = "quantity", precision = 14, scale = 2)
     public BigDecimal getMiktar() {
         return miktar;
     }
@@ -48,6 +65,7 @@ public class Gider {
         this.miktar = miktar;
     }
 
+    @Column(name = "date")
     public Date getTarih() {
         return tarih;
     }
@@ -56,6 +74,8 @@ public class Gider {
         this.tarih = tarih;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
     public Ogretmen getOgretmen() {
         return ogretmen;
     }
@@ -64,6 +84,8 @@ public class Gider {
         this.ogretmen = ogretmen;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     public Personel getPersonel() {
         return personel;
     }
@@ -72,6 +94,8 @@ public class Gider {
         this.personel = personel;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "inventory_id")
     public Envanter getEnvanter() {
         return envanter;
     }
@@ -79,6 +103,5 @@ public class Gider {
     public void setEnvanter(Envanter envanter) {
         this.envanter = envanter;
     }
-    
-    
+
 }
