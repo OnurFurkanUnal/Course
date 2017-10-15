@@ -26,6 +26,8 @@ public class frmLogin extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         kullaniciKontrol();
+        txtKullaniciAdi.setText("admin");
+        txtSifre.setText("1");
     }
 
     /**
