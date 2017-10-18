@@ -29,23 +29,111 @@ public class frmOgrenciIsleri extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        btnKayıtEkle = new javax.swing.JMenuItem();
+        btnKayıtGuncelle = new javax.swing.JMenuItem();
+        btnKayıtSil = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jMenu1.setText("Islem Menusu");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        btnKayıtEkle.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        btnKayıtEkle.setText("Kayıt Ekle");
+        btnKayıtEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKayıtEkleActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnKayıtEkle);
+
+        btnKayıtGuncelle.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        btnKayıtGuncelle.setText("Kayıt Güncelle");
+        btnKayıtGuncelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKayıtGuncelleActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnKayıtGuncelle);
+
+        btnKayıtSil.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        btnKayıtSil.setText("Kayıt Sil");
+        btnKayıtSil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKayıtSilActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnKayıtSil);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnKayıtEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtEkleActionPerformed
+        frmOgrenciEkle ekle = new frmOgrenciEkle();
+        ekle.show();
+    }//GEN-LAST:event_btnKayıtEkleActionPerformed
+
+    private void btnKayıtGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtGuncelleActionPerformed
+       
+       
+    }//GEN-LAST:event_btnKayıtGuncelleActionPerformed
+
+    private void btnKayıtSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtSilActionPerformed
+      
+    }//GEN-LAST:event_btnKayıtSilActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+       
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnKayıtEkle;
+    private javax.swing.JMenuItem btnKayıtGuncelle;
+    private javax.swing.JMenuItem btnKayıtSil;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
