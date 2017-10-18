@@ -36,4 +36,5 @@ public class GelirService implements IService<Gelir>{
         return baseService.getAll(Gelir.class);
     }
     
+    
 }

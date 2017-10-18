@@ -109,8 +109,8 @@ public class frmOgrenciIsleri extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKayıtEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtEkleActionPerformed
-        frmOgrenciEkle ekle = new frmOgrenciEkle();
-        ekle.show();
+       frmEkle e=new frmEkle(null, rootPaneCheckingEnabled);
+        e.show();
     }//GEN-LAST:event_btnKayıtEkleActionPerformed
 
     private void btnKayıtGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtGuncelleActionPerformed

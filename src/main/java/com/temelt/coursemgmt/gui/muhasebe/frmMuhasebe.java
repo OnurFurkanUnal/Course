@@ -5,6 +5,14 @@
  */
 package com.temelt.coursemgmt.gui.muhasebe;
 
+import com.temelt.coursemgmt.model.muhasebe.Gelir;
+import com.temelt.coursemgmt.model.ogrenciisleri.Ogrenci;
+import com.temelt.coursemgmt.model.ogrenciisleri.OgrenciOdeme;
+import com.temelt.coursemgmt.service.muhasebe.jbdcUtil;
+import com.temelt.coursemgmt.util.BaseService;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vektorel
@@ -17,6 +25,7 @@ public class frmMuhasebe extends javax.swing.JDialog {
     public frmMuhasebe(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        tabloDoldur();
         setLocationRelativeTo(null);
     }
 
@@ -29,24 +38,66 @@ public class frmMuhasebe extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+  private void tabloDoldur() {
 
+      
+      BaseService baseService=new BaseService();
+        List<Gelir> gelirList = baseService.getAll(Gelir.class);
+        String[][] data = new String[gelirList.size()][6];
+
+        for (int i = 0; i < gelirList.size(); i++) {
+           
+            data[i][0] = gelirList.get(i).getId().toString();
+            data[i][1] = gelirList.get(i).getKonu();
+            data[i][2] =String.valueOf(gelirList.get(i).getMiktar()) ;
+            data[i][3] =  String.valueOf( gelirList.get(i).getOgrenciOdeme()) ;
+            data[i][4] = String.valueOf(gelirList.get(i).getEnvanter()) ;
+            data[i][5] = String.valueOf(gelirList.get(i).getTarih()) ;
+
+            
+        }
+        jTable1.setModel(new DefaultTableModel(data, new String[]{"Id", "Konu", "Miktar", "OgrencıodemeId", "EnvanterId", "Tarih"}));
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

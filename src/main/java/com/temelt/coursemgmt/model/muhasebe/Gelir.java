@@ -92,4 +92,7 @@ public class Gelir {
         this.envanter = envanter;
     }
 
+
+    
+       
 }
