@@ -91,7 +91,7 @@ public class Gelir {
     public void setEnvanter(Envanter envanter) {
         this.envanter = envanter;
     }
-
+    
 
     
        

@@ -6,8 +6,12 @@
 package com.temelt.coursemgmt.service.muhasebe;
 
 import com.temelt.coursemgmt.model.muhasebe.Gelir;
+import com.temelt.coursemgmt.util.CourseHibernateUtil;
 import com.temelt.coursemgmt.util.IService;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 
 /**
@@ -34,6 +38,19 @@ public class GelirService implements IService<Gelir>{
     @Override
     public List<Gelir> getAll() {
         return baseService.getAll(Gelir.class);
+    }
+    public List<Gelir> getById(Long id) {
+        
+        Session session= baseService.getSession().getSessionFactory().openSession();
+        Criteria criteria= session.createCriteria(Gelir.class);
+        criteria.add(Restrictions.eq( "id", id));
+        return criteria.list();
+    }
+     public List<Gelir> getByIdd(long id) {
+        Session session= CourseHibernateUtil.getSessionFactory().openSession();
+        Criteria criteria= session.createCriteria(Gelir.class);
+        criteria.add(Restrictions.eq( "id", id));
+        return criteria.list();
     }
     
     

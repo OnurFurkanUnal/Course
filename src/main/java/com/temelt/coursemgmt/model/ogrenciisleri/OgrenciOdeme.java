@@ -83,6 +83,7 @@ public class OgrenciOdeme {
     public String toString() {
         return String.valueOf(id);
     }
+ 
     
 
 }
