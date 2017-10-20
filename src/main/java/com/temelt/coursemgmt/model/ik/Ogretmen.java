@@ -106,4 +106,14 @@ public class Ogretmen {
         this.kayitTarihi = kayitTarihi;
     }
 
+    @Override
+    public String toString() {
+        return  "adi = "+ad+ " soyadı = "+soyad+ " id = "+id;
+    }
+
+   
+
+    
+    
+
 }

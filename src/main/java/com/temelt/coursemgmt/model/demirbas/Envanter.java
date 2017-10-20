@@ -99,4 +99,10 @@ public class Envanter {
         this.gider = gider;
     }
 
+    @Override
+    public String toString() {
+        return  "tanimi = "+tanim+ " id = "+id;
+    }
+    
+
 }

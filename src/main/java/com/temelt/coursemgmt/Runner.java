@@ -6,16 +6,8 @@
 package com.temelt.coursemgmt;
 
 import com.temelt.coursemgmt.gui.kullanici.frmLogin;
-import com.temelt.coursemgmt.gui.muhasebe.frmMuhasebe;
-import com.temelt.coursemgmt.model.muhasebe.Gelir;
-import com.temelt.coursemgmt.model.ogrenciisleri.Ogrenci;
-import com.temelt.coursemgmt.model.ogrenciisleri.OgrenciOdeme;
-import com.temelt.coursemgmt.service.muhasebe.GelirService;
-import com.temelt.coursemgmt.service.ogrenciisleri.OgrenciGrupService;
-import com.temelt.coursemgmt.service.ogrenciisleri.OgrenciOdemeService;
-import com.temelt.coursemgmt.service.ogrenciisleri.OgrenciService;
-import java.math.BigDecimal;
-import java.util.Date;
+
+
 
 /**
  *

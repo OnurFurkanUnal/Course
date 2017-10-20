@@ -8,33 +8,25 @@ package com.temelt.coursemgmt.gui.muhasebe;
 import com.temelt.coursemgmt.model.muhasebe.Gelir;
 import com.temelt.coursemgmt.model.ogrenciisleri.Ogrenci;
 import com.temelt.coursemgmt.model.ogrenciisleri.OgrenciOdeme;
-import com.temelt.coursemgmt.service.ogrenciisleri.OgrenciOdemeService;
-import com.temelt.coursemgmt.service.ogrenciisleri.OgrenciService;
 import com.temelt.coursemgmt.service.muhasebe.GelirService;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author Master
  */
-public class eklePop extends javax.swing.JDialog {
+public class gelirEklePop extends javax.swing.JDialog {
 
     public static int a;
 
     /**
      * Creates new form eklePop
      */
-    public eklePop(java.awt.Frame parent, boolean modal) {
+    public gelirEklePop(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         comboDoldur();
@@ -112,18 +104,14 @@ public class eklePop extends javax.swing.JDialog {
                     .addComponent(jLabel5))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldkonu, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                .addComponent(jTextFieldmiktar)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addContainerGap(42, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldkonu, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                        .addComponent(jTextFieldmiktar)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,9 +148,8 @@ public class eklePop extends javax.swing.JDialog {
         // TODO add your handling code here:
       
         GelirService gelirService = new GelirService();
-        OgrenciOdemeService ogrenciodemeService = new OgrenciOdemeService();
         Gelir g = new Gelir();
-        List<OgrenciOdeme> liste = ogrenciodemeService.getAll();
+        List<OgrenciOdeme> liste = gelirService.getAllO();
         if (jTextFieldkonu.getText().isEmpty()) {
             g.setKonu(liste.get(a).getAciklama());
         } else {
@@ -182,8 +169,7 @@ public class eklePop extends javax.swing.JDialog {
         System.out.println("++++" + a);
 
         GelirService gelirService = new GelirService();
-        OgrenciOdemeService ogrenciodemeService = new OgrenciOdemeService();
-        List<OgrenciOdeme> liste = ogrenciodemeService.getAll();
+        List<OgrenciOdeme> liste = gelirService.getAllO();
       
         jTextFieldkonu.setText(liste.get(a).getAciklama());
         jTextFieldmiktar.setText(String.valueOf(liste.get(a).getOdemeMiktari()));
@@ -197,12 +183,11 @@ public class eklePop extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
     public void comboDoldur() {
-        OgrenciService ogrenciService = new OgrenciService();
-        OgrenciOdemeService ogrenciodemeService = new OgrenciOdemeService();
-        List<Ogrenci> list = ogrenciService.getAll();
+        GelirService gelirService=new GelirService();
+        List<Ogrenci> list = gelirService.getAllOg();
         jComboBox2.setModel(new DefaultComboBoxModel(list.toArray()));
-
-        List<OgrenciOdeme> listee = ogrenciodemeService.getAll();
+        
+        List<OgrenciOdeme> listee = gelirService.getAllO();
         jTextFieldkonu.setText(listee.get(0).getAciklama());
         jTextFieldmiktar.setText(String.valueOf(listee.get(0).getOdemeMiktari()));
         jLabel6.setText(String.valueOf(listee.get(0)));

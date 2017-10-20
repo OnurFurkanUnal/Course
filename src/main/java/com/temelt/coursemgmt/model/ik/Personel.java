@@ -106,4 +106,10 @@ public class Personel {
         this.baslamaTarihi = baslamaTarihi;
     }
 
+   @Override
+    public String toString() {
+        return  "adi = "+ad+ " soyadı = "+soyad+ " id = "+id;
+    }
+    
+
 }

@@ -5,35 +5,30 @@
  */
 package com.temelt.coursemgmt.gui.muhasebe;
 
-import com.temelt.coursemgmt.model.muhasebe.Gelir;
-import com.temelt.coursemgmt.model.ogrenciisleri.Ogrenci;
-import com.temelt.coursemgmt.model.ogrenciisleri.OgrenciOdeme;
-import com.temelt.coursemgmt.service.muhasebe.jbdcUtil;
-import com.temelt.coursemgmt.util.BaseService;
-import java.util.List;
-import com.temelt.coursemgmt.service.muhasebe.GelirService;
+import com.temelt.coursemgmt.model.muhasebe.Gider;
+import com.temelt.coursemgmt.service.muhasebe.GiderService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
  *
- * @author vektorel
+ * @author Master
  */
-public class frmMuhasebe extends javax.swing.JDialog {
-    
-    public static String valueInCell;
-    public static Long aasd;
-    JPopupMenu popupMenu = new JPopupMenu();
+public class frmMuhasebeGider extends javax.swing.JDialog {
+  JPopupMenu popupMenu = new JPopupMenu();
     JMenuItem menuItemAdd = new JMenuItem("Fatura Sil");
-
+    JMenuItem menuItemAdd1 = new JMenuItem("Fatura Guncelle");
+    public static String clickValue;
     /**
-     * Creates new form frmMuhasebe
+     * Creates new form frmMuhasebeGider
      */
-    public frmMuhasebe(java.awt.Frame parent, boolean modal) {
+    public frmMuhasebeGider(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         tabloDoldur();
@@ -50,13 +45,11 @@ public class frmMuhasebe extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -82,21 +75,13 @@ public class frmMuhasebe extends javax.swing.JDialog {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Gelir Ekle");
+        jMenuItem1.setText("Gider Ekle");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem1);
-
-        jMenuItem3.setText("Yenile");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
 
         jMenuItem2.setText("Cıkıs");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +102,9 @@ public class frmMuhasebe extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,68 +116,73 @@ public class frmMuhasebe extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        eklePop p = new eklePop(null, rootPaneCheckingEnabled);
-        JOptionPane.showMessageDialog(rootPane, "Ogrencı ıslerının eklemedigi bı ogrencıden para alamazsınız.");
-        p.show();
-
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+          try {
+           giderEklePop p=new giderEklePop(null, rootPaneCheckingEnabled);
+        JOptionPane.showMessageDialog(rootPane, "Baska Departmanların vermedıgı bır paraya fatura kesemezsınız.");
+        p.show();
         tabloDoldur();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,  "Fatura Kesmen Icın Oncelıkle Diger departmanların odeme yapması lazım.");
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
          int row = jTable1.rowAtPoint(evt.getPoint());
          int col = jTable1.columnAtPoint(evt.getPoint());
-         valueInCell = (String)jTable1.getValueAt(row, 0);
-        System.out.println(valueInCell);
-         
-            
-     //        int roww= jTable1.getSelectedRow();
-     //        int column = jTable1.getSelectedColumn();
-              
-     //        aasd=(Long) jTable1.getValueAt(roww, 0);
-          //   System.out.println(aasd);         
-        
-
+         clickValue = (String)jTable1.getValueAt(row, 0);
+        System.out.println(clickValue);
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void tabloDoldur() {
-
-        GelirService gelirService = new GelirService();
-        List<Gelir> gel = gelirService.getAll();
-        String[][] data = new String[gel.size()][5];
-        for (int i = 0; i < gel.size(); i++) {
-
-            data[i][0] = gel.get(i).getId().toString();
-            data[i][1] = gel.get(i).getKonu();
-            data[i][2] = String.valueOf(gel.get(i).getMiktar());
-            data[i][3] = String.valueOf(gel.get(i).getOgrenciOdeme());
-            data[i][4] = String.valueOf(gel.get(i).getTarih());
+private void tabloDoldur() {
+ 
+        GiderService giderService=new GiderService();
+        List<Gider> git = giderService.getAll();
+        String[][] data = new String[git.size()][7];
+        for (int i = 0; i < git.size(); i++) {
+           
+            data[i][0] = git.get(i).getId().toString();
+            data[i][1] = git.get(i).getKonu();
+            data[i][2] = String.valueOf(git.get(i).getMiktar());
+            data[i][3] = String.valueOf(git.get(i).getPersonel());
+            data[i][4] = String.valueOf(git.get(i).getOgretmen());
+            data[i][5] = String.valueOf(git.get(i).getEnvanter());
+            data[i][6] = String.valueOf(git.get(i).getTarih());
 
         }
-        jTable1.setModel(new DefaultTableModel(data, new String[]{"Id", "Konu", "Miktar", "OgrencıodemeId", "Tarih"}));
+ jTable1.setModel(new DefaultTableModel(data, new String[]{"Id", "Konu", "Miktar", "Personel_id","Ogretmen_Id", "Envanter_id" ,"Tarih"}));
 
     }
-    private void popupMenuEkle() {
+
+
+   private void popupMenuEkle() {
         popupMenu.add(menuItemAdd);
         menuItemAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                silPop p=new silPop(null, rootPaneCheckingEnabled);
-                p.show();
+    
+                giderSilPop pop=new giderSilPop(null, rootPaneCheckingEnabled);
+                pop.show();
                 tabloDoldur();
+            }
+        });
+        popupMenu.add(menuItemAdd1);
+        menuItemAdd1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            giderGuncellePop gp=new giderGuncellePop(null, rootPaneCheckingEnabled);
+            gp.show();
+            tabloDoldur();
+                
             }
         });
        jTable1.setComponentPopupMenu(popupMenu);
@@ -202,8 +194,6 @@ public class frmMuhasebe extends javax.swing.JDialog {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

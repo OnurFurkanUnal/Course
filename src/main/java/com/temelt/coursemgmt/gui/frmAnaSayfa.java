@@ -8,7 +8,8 @@ package com.temelt.coursemgmt.gui;
 import com.temelt.coursemgmt.gui.demirbas.frmDemirbas;
 import com.temelt.coursemgmt.gui.ik.frmIK;
 import com.temelt.coursemgmt.gui.kullanici.frmKullanici;
-import com.temelt.coursemgmt.gui.muhasebe.frmMuhasebe;
+import com.temelt.coursemgmt.gui.muhasebe.frmMuhasebeGelir;
+import com.temelt.coursemgmt.gui.muhasebe.frmMuhasebeEkranSec;
 import com.temelt.coursemgmt.gui.ogrenciisleri.frmOgrenciIsleri;
 import com.temelt.coursemgmt.gui.ogretmen.frmOgretmen;
 import com.temelt.coursemgmt.gui.yonetim.frmYonetim;
@@ -158,8 +159,8 @@ public class frmAnaSayfa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIKActionPerformed
 
     private void btnMuhasebeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuhasebeActionPerformed
-        frmMuhasebe muhasebe=new frmMuhasebe(null, true);
-        muhasebe.show();
+        frmMuhasebeEkranSec ekranSec=new frmMuhasebeEkranSec(null,true);
+        ekranSec.show();
     }//GEN-LAST:event_btnMuhasebeActionPerformed
 
     private void btnOgrenciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrenciActionPerformed

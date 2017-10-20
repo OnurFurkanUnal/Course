@@ -104,4 +104,10 @@ public class Gider {
         this.envanter = envanter;
     }
 
+    @Override
+    public String toString() {
+        return  "Personel id = "+personel+ " Envanter id = "+envanter+ " Ogretmen id = "+ogretmen;
+    }
+ 
+
 }
