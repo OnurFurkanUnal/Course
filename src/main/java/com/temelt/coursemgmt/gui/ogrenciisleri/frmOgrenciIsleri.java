@@ -109,17 +109,24 @@ public class frmOgrenciIsleri extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKayıtEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtEkleActionPerformed
+<<<<<<< HEAD
        frmEkle e=new frmEkle(null, rootPaneCheckingEnabled);
         e.show();
+=======
+        frmOgrenciEkle ekle = new frmOgrenciEkle(null, rootPaneCheckingEnabled);
+        ekle.show();
+>>>>>>> origin/master
     }//GEN-LAST:event_btnKayıtEkleActionPerformed
 
     private void btnKayıtGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtGuncelleActionPerformed
-       
+frmOgrenciGuncelle guncelle = new frmOgrenciGuncelle(null, rootPaneCheckingEnabled);
+guncelle.show();
        
     }//GEN-LAST:event_btnKayıtGuncelleActionPerformed
 
     private void btnKayıtSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKayıtSilActionPerformed
-      
+frmOgrenciSil sil = new frmOgrenciSil(null, rootPaneCheckingEnabled);
+sil.show();
     }//GEN-LAST:event_btnKayıtSilActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
