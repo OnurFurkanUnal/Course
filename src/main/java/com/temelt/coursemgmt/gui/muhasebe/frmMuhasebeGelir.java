@@ -27,16 +27,13 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
     JPopupMenu popupMenu = new JPopupMenu();
     JMenuItem menuItemAdd = new JMenuItem("Fatura Sil");
     JMenuItem menuItemAdd1 = new JMenuItem("Fatura Guncelle");
-   
-  
     Vector originalTableModel;
 
     /**
      * Creates new form frmMuhasebe
      */
     public frmMuhasebeGelir(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        
+        super(parent, modal);     
         initComponents();
         tabloDoldur();
         popupMenuEkle();
@@ -162,9 +159,6 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane,  "Fatura Kesmen Icın Oncelıkle OGrencııslerı Odeme almak zorunda.");
             e.printStackTrace();
         }
-        
-
-
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -183,14 +177,10 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
          int col = jTable1.columnAtPoint(evt.getPoint());
          valueInCell = (String)jTable1.getValueAt(row, 0);
         System.out.println(valueInCell);
-         
-        
-
     }//GEN-LAST:event_jTable1MouseClicked
-
-    
+  
     private void jButton1araActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1araActionPerformed
-       
+      
     originalTableModel = (Vector) ((DefaultTableModel) jTable1.getModel()).getDataVector().clone();
     DefaultTableModel currtableModel = (DefaultTableModel) jTable1.getModel();
 

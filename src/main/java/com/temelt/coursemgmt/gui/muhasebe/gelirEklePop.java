@@ -148,8 +148,12 @@ public class gelirEklePop extends javax.swing.JDialog {
         // TODO add your handling code here:
       
         GelirService gelirService = new GelirService();
+        
         Gelir g = new Gelir();
+        
         List<OgrenciOdeme> liste = gelirService.getAllO();
+        
+        
         if (jTextFieldkonu.getText().isEmpty()) {
             g.setKonu(liste.get(a).getAciklama());
         } else {
@@ -188,6 +192,7 @@ public class gelirEklePop extends javax.swing.JDialog {
         jComboBox2.setModel(new DefaultComboBoxModel(list.toArray()));
         
         List<OgrenciOdeme> listee = gelirService.getAllO();
+        
         jTextFieldkonu.setText(listee.get(0).getAciklama());
         jTextFieldmiktar.setText(String.valueOf(listee.get(0).getOdemeMiktari()));
         jLabel6.setText(String.valueOf(listee.get(0)));

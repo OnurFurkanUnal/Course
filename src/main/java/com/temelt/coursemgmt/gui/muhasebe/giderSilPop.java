@@ -51,6 +51,11 @@ GiderService giderService = new GiderService();
         jLabel6envanterid = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel3.setText("Konu   :");
 
@@ -155,16 +160,21 @@ GiderService giderService = new GiderService();
         giderService.delete(list.get(0));
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 public void get() {
         
         List<Gider> list = giderService.getByIdd(Long.parseLong(clickValue));
 
-        jLabel5miktar.setText(String.valueOf(list.get(0).getMiktar()));
+        jLabel5miktar.setText(String.valueOf(list.get(0).getEnvanter()));
         jLabel7konu.setText(list.get(0).getKonu());
-        jLabel8tarih.setText(String.valueOf(list.get(0).getTarih()));
+        jLabel10personelid.setText(String.valueOf(list.get(0).getPersonel()));
         jLabel6ogretmenid.setText(String.valueOf(list.get(0).getOgretmen()));
-        jLabel10personelid.setText(String.valueOf(list.get(0).getPersonel()) );
-        jLabel6envanterid.setText(String.valueOf(list.get(0).getEnvanter()));
+        jLabel6envanterid.setText(String.valueOf(list.get(0).getMiktar()));
+        jLabel8tarih.setText(String.valueOf(list.get(0).getTarih()));
 }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
