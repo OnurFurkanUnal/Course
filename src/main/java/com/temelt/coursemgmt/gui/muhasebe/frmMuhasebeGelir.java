@@ -10,6 +10,7 @@ import java.util.List;
 import com.temelt.coursemgmt.service.muhasebe.GelirService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -26,18 +27,22 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
     JPopupMenu popupMenu = new JPopupMenu();
     JMenuItem menuItemAdd = new JMenuItem("Fatura Sil");
     JMenuItem menuItemAdd1 = new JMenuItem("Fatura Guncelle");
+   
+  
+    Vector originalTableModel;
 
     /**
      * Creates new form frmMuhasebe
      */
     public frmMuhasebeGelir(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        
         initComponents();
         tabloDoldur();
         popupMenuEkle();
         setLocationRelativeTo(null);
     }
-
+          
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +55,9 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane1ara = new javax.swing.JEditorPane();
+        jButton1ara = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -76,6 +84,15 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+
+        jScrollPane2.setViewportView(jEditorPane1ara);
+
+        jButton1ara.setText("ARA");
+        jButton1ara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1araActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -114,13 +131,21 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1ara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1ara))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -162,6 +187,28 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
         
 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    
+    private void jButton1araActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1araActionPerformed
+       
+    originalTableModel = (Vector) ((DefaultTableModel) jTable1.getModel()).getDataVector().clone();
+    DefaultTableModel currtableModel = (DefaultTableModel) jTable1.getModel();
+
+    currtableModel.setRowCount(0);
+
+    for (Object rows : originalTableModel) {
+        Vector rowVector = (Vector) rows;
+        for (Object column : rowVector) {
+            if (column.toString().contains(jEditorPane1ara.getText())) {
+                
+                currtableModel.addRow(rowVector);
+                break;
+            }
+        }
+
+    }
+
+    }//GEN-LAST:event_jButton1araActionPerformed
 
     private void tabloDoldur() {
 
@@ -206,6 +253,8 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1ara;
+    private javax.swing.JEditorPane jEditorPane1ara;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -214,6 +263,7 @@ public class frmMuhasebeGelir extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

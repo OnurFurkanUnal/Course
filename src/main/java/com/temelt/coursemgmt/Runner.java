@@ -19,7 +19,6 @@ public class Runner {
         login.setLocationRelativeTo(null);
         login.show();
     
-        
-        
+            
     }
 }
